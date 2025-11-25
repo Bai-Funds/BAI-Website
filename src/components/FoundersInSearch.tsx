@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import FadeIn from './animations/FadeIn';
-import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 interface FoundersInSearchProps {
@@ -12,223 +10,163 @@ interface FoundersInSearchProps {
 const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const baseMembers = [
+  const teamMembers = [
     {
       name: "Peter Bai",
-      role: "Portfolio Manager",
-      degree: "B.A., Honors Business Administration (Ivey Business School, Western)",
+      role: "CEO",
+      degree: "HBA, Ivey Business School (Western)",
       logoPrimary: "/assets/Ivey Logo.jpg",
       fullDescription:
-        "Peter leads investment research and portfolio management at BAI: setting the research roadmap, designing model specifications, integrating signals across regimes, and owning portfolio construction and risk oversight. He is an Ivey HBA student at Western University and the architect of BAI's multi‑agent AI research system. He previously worked as a quant developer on the Macro Trading Desk at University Pension Plan Ontario, covering FX, equity TRS, and repo within a $13B AUM portfolio. Earlier, he was an Equity Markets quant at TMX Group focused on trading infrastructure and technology, and he spent time in venture capital at HCS Capital evaluating fintech and insurtech co‑investments.",
+        "Peter leads product strategy and execution at Sequence Markets. He previously worked on the Macro Trading Desk at a major Canadian pension fund covering FX, equity TRS, and repo. Earlier, he worked in quantitative research at a Canadian exchange focused on market structure and equities product design. Dean's Honour List at Ivey. Co-President of Western AI. Founded Leap & Strive, a national mentorship program.",
       image: "/assets/Peter HeadShot.png",
       linkedin: "https://www.linkedin.com/in/peter-bai/",
     },
     {
       name: "Muhammad Awan",
-      role: "Research Platform Lead",
-      degree: "B.Sc., Computer Science (Waterloo)",
+      role: "CTO",
+      degree: "B.Sc. Computer Science & AI, Waterloo",
       logoPrimary: "/assets/Waterloo Logo.jpeg",
       fullDescription:
-        "Muhammad leads the research platform and systems engineering at BAI, owning data ingestion and pipelines, training/evaluation infrastructure, orchestration, and reliable deployment of agents into production. He is a Computer Science student at the University of Waterloo and a Founding Machine Learning Engineer at Boardy AI, building production ML systems for digital human interaction. He previously built ML pipelines at UTEX Scientific Instruments and contributed to autonomous vehicle perception at WATonomous and path planning at MIT‑PITT‑RW.",
+        "Muhammad leads engineering and infrastructure at Sequence Markets. He is a Founding ML Engineer at Boardy AI, architecting systems handling 10K+ daily active users. Previously built ML pipelines and contributed to autonomous vehicle perception systems. Built HFT systems from scratch with microsecond-level order processing. Created AI game systems using MCTS and neural networks.",
       image: "/assets/Muhammad HeadShot.png",
-      linkedin: "https://www.linkedin.com/in/muhammad-awan0/?originalSubdomain=ca",
-    },
-    {
-      name: "Josephina Kim",
-      role: "Research Ops & Partnerships",
-      degree: "B.Sc., Computer Science (Waterloo) & B.B.A., Business Administration (Laurier)",
-      logoPrimary: "/assets/Waterloo Logo.jpeg",
-      logoSecondary: "/assets/Laurier Logo.png",
-      fullDescription:
-        "Josephina leads research operations and partnerships at BAI, managing data/vendor relationships, university and industry outreach, events, and the day‑to‑day processes that keep research execution running smoothly. She is pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University and is a Schulich Leader Scholar. She leads BAI's industry research and sector analysis, having worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading, and as a venture capital analyst at Render Capital evaluating early‑stage technology investments.",
-      image: "/assets/Josephina HeadShot.png",
-      linkedin: "https://www.linkedin.com/in/josephina-kim/?originalSubdomain=ca",
+      linkedin: "https://www.linkedin.com/in/muhammad-awan0",
     },
     {
       name: "Frank Zou",
-      role: "Capital & Investor Relations",
-      degree: "B.MOS, Finance (Huron, Western); Advanced Entry Opportunity to Ivey Business School",
+      role: "Head of Business Development",
+      degree: "B.MOS Finance, Huron (Western); Ivey AEO",
       logoPrimary: "/assets/Huron Logo.png",
       fullDescription:
-        "Frank leads capital and investor relations at BAI, managing LP outreach and diligence, fundraising pipeline management, and broker/venue interfaces that translate research into efficient trading. He is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status and a varsity rower. He has worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules, and he helped lead communications and partnerships for student investment organizations at Western University.",
+        "Frank leads business development and client relations at Sequence Markets, managing institutional outreach, pilot programs, and partnerships. He previously worked at a Canadian exchange as a quantitative analyst conducting market structure research and focusing on product innovation. Varsity rower at Western.",
       image: "/assets/Frank HeadShot.png",
-      linkedin: "https://www.linkedin.com/in/fzou26/?originalSubdomain=ca",
+      linkedin: "https://www.linkedin.com/in/fzou26/",
     },
-  ];
-
-  // Optional dev-only test profile(s)
-  const devOnlyMembers: Array<{
-    name: string;
-    role: string;
-    degree: string;
-    logoPrimary: string;
-    logoSecondary?: string;
-    logoTertiary?: string;
-    fullDescription: string;
-    image: string;
-    linkedin: string;
-  }> = [
+    {
+      name: "Josephina Kim",
+      role: "Head of Execution Research",
+      degree: "B.Sc. CS (Waterloo) & B.B.A. (Laurier)",
+      logoPrimary: "/assets/Waterloo Logo.jpeg",
+      logoSecondary: "/assets/Laurier Logo.png",
+      fullDescription:
+        "Josephina leads execution research at Sequence Markets, managing data/vendor relationships and research operations. Schulich Leader Scholar. Previously worked as a quantitative analyst at a major Canadian bank's electronic trading desk developing models for electronic execution.",
+      image: "/assets/Josephina HeadShot.png",
+      linkedin: "https://www.linkedin.com/in/josephina-kim/",
+    },
     {
       name: "Zilong Bai",
-      role: "ML Research Advisor",
-      degree: "Ph.D., Computer Science (UC Davis); M.Eng., Information & Communication Engineering (USTC); B.Eng., Electronic Information Engineering (USTC)",
+      role: "AI & ML Advisor",
+      degree: "Ph.D. CS (UC Davis); M.Eng. & B.Eng. (USTC)",
       logoPrimary: "/assets/UC Davis Logo.png",
       logoSecondary: "/assets/university of science and technology of china logo.jpeg",
-      // Cornell logo intentionally omitted per request
       fullDescription:
-        "Zilong advises BAI's machine learning program: shaping research best practices, reviewing model specifications, and guiding our use of data mining and applied ML methods for market data. He is a Research Associate at Weill Cornell Medicine, and he holds a Ph.D. in Computer Science from UC Davis with first‑author work across leading venues (Science Translational Medicine, KDD, NPJ). Zilong focuses on graph modeling, multimodal learning, and rigorous evaluation standards. His reviews help keep BAI's research lean, reproducible, and ready for integration into our systematic strategies.",
+        "Zilong advises Sequence Markets' machine learning program: shaping research best practices, reviewing model specifications, and guiding reinforcement learning for execution optimization. Research Associate at a major medical research institution. First-author publications at leading venues including Science Translational Medicine, KDD, NPJ.",
       image: "/assets/Zilong HeadShot.png",
       linkedin: "https://www.linkedin.com/in/zilong-bai-72a227133/",
     },
   ];
 
-  const teamMembers: Array<{
-    name: string;
-    role: string;
-    degree: string;
-    logoPrimary: string;
-    logoSecondary?: string;
-    logoTertiary?: string;
-    fullDescription: string;
-    image: string;
-    linkedin: string;
-  }> = (import.meta.env.DEV ? [...baseMembers, ...devOnlyMembers] : baseMembers) as any;
-
-  const toggleExpanded = (index: number) => {
-    setExpandedIndex(prev => (prev === index ? null : index));
-  };
-
-  // Temporarily hide specific profiles without deleting them
-  const visibleMembers = teamMembers.filter((m) => m.name !== "Zilong Bai");
-  const orderRank: Record<string, number> = {
-    "Peter Bai": 0,
-    "Muhammad Awan": 1,
-    "Frank Zou": 2,
-    "Josephina Kim": 3,
-  };
-  const orderedMembers = visibleMembers.slice().sort((a, b) => (orderRank[a.name] ?? 99) - (orderRank[b.name] ?? 99));
-
   return (
-    <section id="team" className={cn('section-spacing bg-background', className)}>
-      {/* Mellow geometric background */}
-      {/* Background chart is rendered globally in Index.tsx */}
-      
-      <div className="container mx-auto container-padding">
-        <div className="max-w-5xl mx-auto content-spacing">
+    <section id="team" className={cn('py-28 md:py-36 bg-neutral-950', className)}>
+      <div className="container mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-5xl mb-16">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-12 text-center text-foreground">Our Team</h2>
+            <p className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-6">
+              People
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16 leading-[0.95] tracking-[-0.02em]">
+              Team
+            </h2>
           </FadeIn>
           
           <FadeIn delay={100}>
-            <p className="text-xl md:text-2xl text-center text-muted-foreground font-normal mb-12">
-              Our team combines deep quantitative expertise with cutting-edge technology development, bringing together researchers, engineers, and traders to advance the frontiers of systematic investing.
+            <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed mb-16 max-w-3xl font-normal">
+              Market-structure engineers and ML researchers building execution infrastructure.
             </p>
           </FadeIn>
           
-          <FadeIn delay={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-16">
-              <div>
-                <div className="text-3xl font-bold text-bai-primary mb-2">$13B+</div>
-                <div className="text-sm text-muted-foreground">Combined AUM Experience</div>
+          <FadeIn delay={150}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-10 border-t border-neutral-800">
+              <div className="border-l border-neutral-700 pl-6">
+                <div className="text-lg font-bold text-white mb-1">Exchanges</div>
+                <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">Market Structure</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-bai-primary mb-2">10</div>
-                <div className="text-sm text-muted-foreground">Sectors Worked (Collective)</div>
+              <div className="border-l border-neutral-700 pl-6">
+                <div className="text-lg font-bold text-white mb-1">Asset Managers</div>
+                <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">Execution Systems</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-bai-primary mb-2">4</div>
-                <div className="text-sm text-muted-foreground">Research Publications (YTD)</div>
+              <div className="border-l border-neutral-700 pl-6">
+                <div className="text-lg font-bold text-white mb-1">Banks</div>
+                <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">Electronic Trading</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-bai-primary mb-2">5</div>
-                <div className="text-sm text-muted-foreground">Universities Represented</div>
+              <div className="border-l border-neutral-700 pl-6">
+                <div className="text-lg font-bold text-white mb-1">Research</div>
+                <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">ML & AI</div>
               </div>
             </div>
           </FadeIn>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mx-auto max-w-6xl px-4">
-          {orderedMembers.map((member, index) => (
-            <FadeIn key={index} delay={150 + index * 100} className="relative z-20">
-				<Card 
-                className={cn(
-                  "card-interactive relative z-20",
-                  expandedIndex === index ? "shadow-2xl bg-card" : ""
-                )}
-                style={{ backgroundColor: 'hsl(var(--card))' }}
-                onClick={() => toggleExpanded(index)}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 max-w-5xl">
+          {teamMembers.map((member, index) => (
+            <FadeIn key={index} delay={200 + index * 50}>
+              <div 
+                className="cursor-pointer group"
+                onClick={() => setExpandedIndex(index)}
               >
-                <CardContent className="p-6 text-left flex flex-col" style={{ backgroundColor: 'hsl(var(--card))' }}>
-                  <div className="w-36 h-36 sm:w-40 sm:h-40 mx-auto mb-4 bg-gradient-to-br from-bai-primary to-bai-accent rounded-full flex items-center justify-center transition-all duration-300">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-32 h-32 sm:w-36 sm:h-36 object-cover rounded-full opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-1 text-foreground line-clamp-2 text-center">{member.name}</h3>
-                  <p className="text-muted-foreground font-medium mb-4 text-sm flex-grow line-clamp-2 text-center">{member.role}</p>
-                  
-                  <div className="flex items-center justify-center gap-3 mt-auto mb-4">
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-bai-primary hover:text-bai-primary-light underline font-medium"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      LinkedIn
-                    </a>
-                    <span className="text-muted-foreground">•</span>
-                    <span className="text-xs text-muted-foreground">
-                      {expandedIndex === index ? "Click to close" : "Learn More"}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
+                <div className="aspect-square mb-4 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+                <h3 className="text-sm font-medium text-white mb-1">{member.name}</h3>
+                <p className="text-xs text-neutral-600">{member.role}</p>
+              </div>
 
               <Dialog open={expandedIndex === index} onOpenChange={(open) => setExpandedIndex(open ? index : null)}>
-                <DialogContent className="max-w-3xl bg-white border border-border p-6 sm:p-8 max-h-[80svh] overflow-y-auto">
-                  <div className="flex flex-col md:flex-row items-start gap-6">
-                    <div className="flex flex-col items-center gap-3 flex-shrink-0">
-                      <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full bg-gradient-to-br from-bai-primary to-bai-accent flex items-center justify-center">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 object-cover rounded-full"
-                        />
+                <DialogContent className="max-w-2xl bg-black border border-neutral-900 p-0 max-h-[85svh] overflow-y-auto">
+                  <div className="p-8">
+                    <div className="flex flex-col sm:flex-row items-start gap-8">
+                      <div className="flex flex-col items-center gap-4 flex-shrink-0">
+                        <div className="w-28 h-28 overflow-hidden">
+                          <img
+                            src={member.image}
+                            alt={member.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        {member.logoPrimary && (
+                          <img
+                            src={member.logoPrimary}
+                            alt="School"
+                            className="w-20 h-auto opacity-40"
+                          />
+                        )}
+                        {member.logoSecondary && (
+                          <img
+                            src={member.logoSecondary}
+                            alt="School"
+                            className="w-20 h-auto opacity-40"
+                          />
+                        )}
                       </div>
-                      {member.logoPrimary && (
-                        <img
-                          src={member.logoPrimary}
-                          alt="School logo"
-                          className="w-32 sm:w-36 md:w-40 h-auto opacity-90 mx-auto"
-                        />
-                      )}
-                      {member.logoSecondary && (
-                        <img
-                          src={member.logoSecondary}
-                          alt="Additional school logo"
-                          className="w-32 sm:w-36 md:w-40 h-auto opacity-90 mx-auto"
-                        />
-                      )}
-                      {member.logoTertiary && (
-                        <img
-                          src={member.logoTertiary}
-                          alt="Additional school logo"
-                          className="w-32 sm:w-36 md:w-40 h-auto opacity-90 mx-auto"
-                        />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-1 flex items-center gap-2 flex-wrap">{member.name}</h3>
-                      <p className="text-base sm:text-lg text-muted-foreground mb-1">{member.role}</p>
-                      {member.degree && (
-                        <p className="text-sm text-muted-foreground mb-4">{member.degree}</p>
-                      )}
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        {member.fullDescription}
-                      </p>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
+                        <p className="text-base text-neutral-500 mb-1">{member.role}</p>
+                        <p className="text-xs text-neutral-700 mb-6">{member.degree}</p>
+                        <p className="text-neutral-500 leading-relaxed mb-6 text-sm font-normal">
+                          {member.fullDescription}
+                        </p>
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block text-[10px] text-neutral-400 hover:text-white uppercase tracking-[0.2em] border-b border-neutral-700 hover:border-white pb-1 transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </DialogContent>

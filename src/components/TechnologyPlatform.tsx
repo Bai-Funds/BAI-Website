@@ -1,108 +1,94 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import FadeIn from './animations/FadeIn';
-import { Card, CardContent } from '@/components/ui/card';
 
 interface TechnologyPlatformProps {
   className?: string;
 }
 
 const TechnologyPlatform: React.FC<TechnologyPlatformProps> = ({ className }) => {
-  const capabilities = [
-    {
-      title: "The Multi-Agent AI System",
-      description: "Specialized AI agents working in coordinated teams, each becoming an expert in their domain while collaborating to provide complete market analysis from global macro regimes down to individual stock selection",
-      icon: "🤖"
-    },
-    {
-      title: "The Research Funnel",
-      description: "Systematic multi-layer analysis that filters opportunities from global macro regimes through sector rotation, industry focus, and individual stock selection with zero human bias",
-      icon: "🔍"
-    },
-    {
-      title: "The Signal Engine",
-      description: "Multi-lens analysis combining fundamental, technical, sentiment, behavioral, and structural signals for comprehensive stock evaluation and ranking",
-      icon: "📊"
-    },
-    {
-      title: "The Learning Machine",
-      description: "AI agents that continuously learn from market feedback, adapt to changing regimes, and evolve their strategies to maintain competitive advantage",
-      icon: "⚡"
-    }
-  ];
-
-  const infrastructure = [
-    {
-      title: "BAI Data Lake",
-      description: "Centralized data storage and processing infrastructure that ingests real-time market data, fundamentals, news, and alternative data sources"
-    },
-    {
-      title: "BAI Alpha Engine",
-      description: "Proprietary signal generation system that processes multi-lens analysis and produces actionable investment signals with institutional-quality risk management"
-    },
-    {
-      title: "BAI Portfolio Optimizer", 
-      description: "Dynamic portfolio allocation system that balances expected return, risk, transaction costs, and diversification requirements using advanced optimization techniques"
-    },
-    {
-      title: "BAI Risk Manager",
-      description: "Real-time risk monitoring and management system that ensures compliance with position limits, regulatory requirements, and investment mandates"
-    }
-  ];
-
   return (
-    <section id="technology" className={cn('section-spacing bg-card', className)}>
-      {/* Mellow geometric background */}
-      {/* Background chart is rendered globally in Index.tsx */}
-      
-      <div className="container mx-auto container-padding">
-        <div className="max-w-5xl mx-auto content-spacing">
+    <section id="technology" className={cn('py-28 md:py-36 bg-black', className)}>
+      <div className="container mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-5xl">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-sans font-bold mb-12 text-center text-foreground text-balance">
-              Technology & Infrastructure
+            <p className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-6">
+              Infrastructure
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16 leading-[0.95] tracking-[-0.02em]">
+              Technology
             </h2>
           </FadeIn>
           
           <FadeIn delay={100}>
-            <p className="text-xl md:text-2xl text-center text-muted-foreground mb-12 text-balance font-normal">
-              We build and maintain sophisticated technology infrastructure that enables our research teams to develop, test, and deploy quantitative strategies at scale with institutional-grade reliability and performance.
+            <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed mb-20 max-w-3xl font-normal">
+              Purpose-built execution infrastructure designed for speed, reliability, and continuous optimization.
             </p>
           </FadeIn>
-        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-16 px-4">
-          {capabilities.map((capability, index) => (
-            <FadeIn key={index} delay={150 + index * 50}>
-              <Card className="card-interactive h-full relative z-20" style={{ backgroundColor: 'hsl(var(--card))' }}>
-                <CardContent className="p-8 h-full flex flex-col">
-                  <div className="flex items-start gap-4 md:gap-6 flex-grow">
-                    <div className="w-12 h-12 md:w-16 md:h-16 bg-bai-primary rounded-lg flex items-center justify-center text-xl md:text-2xl transition-colors duration-300 flex-shrink-0">
-                      {capability.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-semibold mb-3 md:mb-4 text-foreground">{capability.title}</h3>
-                      <p className="text-readable text-sm md:text-base">{capability.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          <div className="grid lg:grid-cols-2 gap-12 mb-20">
+            <FadeIn delay={150}>
+              <div className="border-t border-neutral-800 pt-10">
+                <h3 className="text-base font-bold text-white mb-3">Rust Routing Engine</h3>
+                <p className="text-neutral-600 text-sm font-normal">Microsecond-level processing with deterministic recovery</p>
+              </div>
             </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={300}>
-          <div className="bg-card border border-border p-8 rounded-lg">
-            <h3 className="text-2xl font-semibold mb-8 text-center text-foreground">Core Systems</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-                    {infrastructure.map((item, index) => (
-                        <div key={index} className="group p-6 bg-card border border-border rounded-lg transition-colors duration-300 hover:bg-card relative z-20" style={{ backgroundColor: 'hsl(var(--card))' }}>
-							<h4 className="text-xl md:text-2xl font-semibold mb-2 text-foreground">{item.title}</h4>
-							<p className="text-base md:text-lg text-foreground/90 leading-relaxed">{item.description}</p>
-						</div>
-					))}
-            </div>
+            <FadeIn delay={175}>
+              <div className="border-t border-neutral-800 pt-10">
+                <h3 className="text-base font-bold text-white mb-3">Python Control Layer</h3>
+                <p className="text-neutral-600 text-sm font-normal">Models, feedhandlers, reinforcement logic, strategy configuration</p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={200}>
+              <div className="border-t border-neutral-800 pt-10">
+                <h3 className="text-base font-bold text-white mb-3">Redis Streams</h3>
+                <p className="text-neutral-600 text-sm font-normal">Ultra-fast message passing for depth and routing decisions</p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={225}>
+              <div className="border-t border-neutral-800 pt-10">
+                <h3 className="text-base font-bold text-white mb-3">PostgreSQL + Parquet</h3>
+                <p className="text-neutral-600 text-sm font-normal">Historical execution and market analytics</p>
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
+
+          <FadeIn delay={250}>
+            <div className="mb-20 border-t border-neutral-800 pt-10">
+              <h3 className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-8">Performance Targets</h3>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="border-l border-neutral-700 pl-6">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-[-0.02em]">&lt;5ms</div>
+                  <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">End-to-end latency</div>
+                </div>
+                <div className="border-l border-neutral-700 pl-6">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-[-0.02em]">&lt;1ms</div>
+                  <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">Internal decision time</div>
+                </div>
+                <div className="border-l border-neutral-700 pl-6">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-[-0.02em]">99.9%</div>
+                  <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">System uptime</div>
+                </div>
+                <div className="border-l border-neutral-700 pl-6">
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 tracking-[-0.02em]">Multi-region</div>
+                  <div className="text-[10px] text-neutral-600 uppercase tracking-[0.15em]">Failover capability</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={300}>
+            <div className="border-t border-neutral-800 pt-10">
+              <h3 className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-6">Venue Connectivity</h3>
+              <p className="text-neutral-500 mb-4 text-sm font-normal">
+                Direct API connections to major global exchanges and Canadian registered platforms.
+              </p>
+              <p className="text-xs text-neutral-700 font-normal">
+                Expanding coverage across North America, Asia, and Europe.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

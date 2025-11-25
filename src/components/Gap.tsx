@@ -1,97 +1,85 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import FadeIn from './animations/FadeIn';
-import { Card, CardContent } from '@/components/ui/card';
 
 interface GapProps {
   className?: string;
 }
 
 const Gap: React.FC<GapProps> = ({ className }) => {
-  const strategies = [
-    {
-      title: "Multi-Agent Research",
-      description: "Specialized AI agents analyze macro, sector, and stock-level opportunities systematically",
-      details: "Coordinated team of AI agents each focused on specific analysis domains for comprehensive market coverage"
-    },
-    {
-      title: "Systematic Signal Integration", 
-      description: "Multi-lens analysis combining fundamental, technical, sentiment, and behavioral signals",
-      details: "Advanced signal fusion algorithms that weight and combine diverse market signals for robust decision making"
-    },
-    {
-      title: "Adaptive Learning",
-      description: "Continuous model updates and performance feedback loops for evolving market conditions",
-      details: "AI agents that learn from market feedback and adapt strategies as market regimes change"
-    }
-  ];
-
-  const infrastructure = [
-    {
-      title: "Cloud-Native Architecture",
-      icon: "☁️"
-    },
-    {
-      title: "Real-Time Data Integration",
-      icon: "📊"
-    },
-    {
-      title: "Containerized AI Agents", 
-      icon: "🤖"
-    },
-    {
-      title: "Scalable Database Design",
-      icon: "🗄️"
-    }
-  ];
-
   return (
-    <section id="strategy" className={cn('py-20 md:py-32 bg-background', className)}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="max-w-4xl mx-auto mb-16">
+    <section id="how-it-works" className={cn('py-28 md:py-36 bg-neutral-950', className)}>
+      <div className="container mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-5xl">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-center text-foreground text-balance">
-              Our Investment Approach
+            <p className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-6">
+              Process
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-16 leading-[0.95] tracking-[-0.02em]">
+              How It Works
             </h2>
           </FadeIn>
           
           <FadeIn delay={100}>
-            <p className="text-large text-center text-foreground/90 mb-12 text-balance font-medium">
-              Multi-agent AI research system with systematic signal integration and adaptive learning capabilities
+            <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed mb-20 max-w-3xl font-normal">
+              Execution results feed back into the model. Continuously tunes venue weights and child-order sizing.
             </p>
           </FadeIn>
-        </div>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {strategies.map((strategy, index) => (
-            <FadeIn key={index} delay={150 + index * 50}>
-              <Card className="card-interactive h-full relative z-20" style={{ backgroundColor: 'hsl(var(--card))' }}>
-                <CardContent className="p-8 h-full flex flex-col">
-                  <div className="w-12 h-12 bg-bai-primary rounded-lg flex items-center justify-center mb-6 transition-colors duration-300">
-                    <div className="w-6 h-6 bg-white rounded-full"></div>
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-4 text-foreground">{strategy.title}</h3>
-                  <p className="text-readable mb-4 flex-grow">{strategy.description}</p>
-                  <p className="text-small text-muted-foreground">{strategy.details}</p>
-                </CardContent>
-              </Card>
+          <div className="grid lg:grid-cols-3 gap-12 mb-20">
+            <FadeIn delay={150}>
+              <div className="border-t border-neutral-800 pt-10">
+                <div className="text-5xl font-bold text-neutral-800 mb-6 tracking-[-0.02em]">01</div>
+                <h3 className="text-lg font-bold text-white mb-4">Connect</h3>
+                <p className="text-neutral-600 leading-relaxed text-sm font-normal">
+                  Direct low-latency connections to global exchanges and liquidity sources.
+                </p>
+              </div>
             </FadeIn>
-          ))}
-        </div>
-
-        <FadeIn delay={300}>
-          <div className="bg-card border border-border p-6 md:p-8 rounded-lg">
-            <h3 className="text-xl md:text-2xl font-semibold mb-6 md:mb-8 text-center text-foreground">Technical Infrastructure</h3>
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              {infrastructure.map((item, index) => (
-                <div key={index} className="group text-center p-6 bg-card rounded-lg transition-colors duration-300 h-full flex flex-col justify-center relative z-20">
-                  <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-                  <p className="text-sm text-muted-foreground font-medium">{item.title}</p>
-                </div>
-              ))}
-            </div>
+            <FadeIn delay={200}>
+              <div className="border-t border-neutral-800 pt-10">
+                <div className="text-5xl font-bold text-neutral-800 mb-6 tracking-[-0.02em]">02</div>
+                <h3 className="text-lg font-bold text-white mb-4">Aggregate</h3>
+                <p className="text-neutral-600 leading-relaxed text-sm font-normal">
+                  Unified order book. Aggregate depth, fees, latencies and calculate effective price in real time.
+                </p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={250}>
+              <div className="border-t border-neutral-800 pt-10">
+                <div className="text-5xl font-bold text-neutral-800 mb-6 tracking-[-0.02em]">03</div>
+                <h3 className="text-lg font-bold text-white mb-4">Route</h3>
+                <p className="text-neutral-600 leading-relaxed text-sm font-normal">
+                  Evaluate spread, depth, volatility, latency, fees, fill probability, risk constraints. Execute optimally.
+                </p>
+              </div>
+            </FadeIn>
           </div>
-        </FadeIn>
+
+          <FadeIn delay={300}>
+            <div className="border-t border-neutral-800 pt-10">
+              <h3 className="text-[11px] text-neutral-500 uppercase tracking-[0.4em] font-normal mb-8">Reinforcement Loop</h3>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                  <div className="text-white font-medium text-sm mb-2">Fills vs Expected</div>
+                  <p className="text-xs text-neutral-600 font-normal">Track execution quality against predictions</p>
+                </div>
+                <div>
+                  <div className="text-white font-medium text-sm mb-2">Slippage Patterns</div>
+                  <p className="text-xs text-neutral-600 font-normal">Learn from market impact data</p>
+                </div>
+                <div>
+                  <div className="text-white font-medium text-sm mb-2">Latency Anomalies</div>
+                  <p className="text-xs text-neutral-600 font-normal">Detect and adapt to venue issues</p>
+                </div>
+                <div>
+                  <div className="text-white font-medium text-sm mb-2">Venue Outages</div>
+                  <p className="text-xs text-neutral-600 font-normal">Automatic failover routing</p>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );

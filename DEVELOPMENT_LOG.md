@@ -1,3 +1,34 @@
+### XTX-Style Design Polish & Sensitive Info Cleanup — 2025-11-25
+
+- Changes:
+  - Removed all sensitive info: specific exchange names, datacenter locations, firm validations
+  - Replaced with generic references: "major Canadian exchanges", "institutional asset managers"
+  - Polished entire site to match XTX Markets aesthetic:
+    - Font sizes: 11px uppercase tracking for labels, large bold headlines
+    - Spacing: Consistent py-28/py-36 section padding, 0.4em letter-spacing
+    - Colors: Pure black bg, white text, neutral-500/600 for secondary
+    - Borders: Thin neutral-800 dividers, neutral-700 accent borders
+    - Buttons: Border-only style with hover fill transition
+  - Email confirmed as team@baifunds.com throughout
+  - Team section shows generic backgrounds: Exchanges, Asset Managers, Banks, Research
+  - All nav buttons working with smooth scroll
+- Files modified:
+  - src/components/Hero.tsx
+  - src/components/Header.tsx
+  - src/components/About.tsx
+  - src/components/Manifesto.tsx
+  - src/components/Gap.tsx
+  - src/components/TechnologyPlatform.tsx
+  - src/components/FoundersInSearch.tsx
+  - src/components/Community.tsx
+  - src/components/Footer.tsx
+- Result:
+  - Clean, cohesive XTX-style design
+  - No sensitive firm names, datacenter locations, or specific validation claims
+  - Professional, minimal aesthetic throughout
+
+---
+
 ### Repo Sync — 2025-09-23 12:13:43Z (UTC)
 
 - Actions:
@@ -696,3 +727,48 @@ Next steps:
 - Notes:
   - No changes to `vite.config.ts` target; remains 'es2020'.
   - Ready to deploy; cache-busting handled by Vite asset hashes.
+
+---
+
+### Session — 2025-11-25 (Brand asset refresh for Sequence Markets pivot)
+**Date**: 2025-11-25  
+**Timestamp**: 2025-11-25T17:07:01Z  
+**Status**: ✅ COMPLETED
+
+#### What We Accomplished
+- Swapped all visible branding (header, footer, About metrics badge) to the new Sequence Markets wordmark.
+- Added high-resolution favicon variants (16px, 32px PNGs + regenerated ICO) sourced from the new identity.
+- Archived every legacy BAI emblem/wordmark inside `public/assets/deprecated/` for historical reference.
+
+#### Technical Changes Made
+- Added `public/assets/logo-light.png`, `public/favicon-16x16.png`, `public/favicon-32x32.png`, and regenerated `public/favicon.ico`.
+- Moved `public/assets/850bdd41-….png`, `public/assets/BAI Emblem.png`, and the prior `public/favicon.ico` into `public/assets/deprecated/`.
+- Updated `<head>` icon links, structured data logo URL, and favicon cache-busting script inside `index.html`.
+- Pointed `Header.tsx`, `Footer.tsx`, and `About.tsx` image references at the new `/assets/logo-light.png` asset.
+
+#### Files Modified
+- `index.html`
+- `src/components/Header.tsx`
+- `src/components/Footer.tsx`
+- `src/components/About.tsx`
+- `public/assets/logo-light.png`
+- `public/favicon-16x16.png`
+- `public/favicon-32x32.png`
+- `public/favicon.ico`
+- `public/assets/deprecated/850bdd41-…png`
+- `public/assets/deprecated/BAI Emblem.png`
+- `public/assets/deprecated/favicon.ico`
+
+#### Issues Encountered & Resolved
+- Initial `git push` via HTTPS failed (missing credentials); switched the remote to SSH and retried successfully.
+- Verified `vite.config.ts` still targets `'es2020'` to avoid GitHub Pages MIME regressions—no change required.
+
+#### Current Project Status
+- ✅ Sequence Markets logo & favicons fully wired through the site.
+- ✅ Prior BAI visuals retained for historical/audit purposes only.
+- ✅ Icon stack ready for upcoming copy/imagery refresh work.
+
+#### Next Steps
+- Refresh site copy, hero assets, and SEO metadata to match the Sequence Markets positioning.
+- Regenerate `og-image.png` with the new branding before the next deployment.
+- Continue documenting all pivot-related changes in this log.

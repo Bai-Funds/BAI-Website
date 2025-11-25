@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { NavLink } from 'react-router-dom';
 
 interface HeaderProps {
   className?: string;
@@ -19,7 +18,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock background scroll when mobile menu is open
   useEffect(() => {
     const body = document.body;
     if (isMobileMenuOpen) {
@@ -39,15 +37,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     } else {
       const element = document.getElementById(id);
       const headerEl = document.querySelector('header');
-      const headerHeight = headerEl instanceof HTMLElement ? headerEl.offsetHeight : 120;
+      const headerHeight = headerEl instanceof HTMLElement ? headerEl.offsetHeight : 80;
       if (element) {
-        // Prefer the first heading inside the section for precise alignment
-        const heading = element.querySelector('h1, h2, h3, h4');
-        const targetEl = (heading as HTMLElement) || element;
-        const rect = targetEl.getBoundingClientRect();
+        const rect = element.getBoundingClientRect();
         const absoluteTop = window.scrollY + rect.top;
         window.scrollTo({
-          top: absoluteTop - headerHeight - 16, // tiny bit more breathing room
+          top: absoluteTop - headerHeight,
           behavior: 'smooth'
         });
       }
@@ -59,40 +54,39 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       className={cn(
         'fixed top-0 left-0 right-0 z-[70] transition-all duration-300',
         isScrolled 
-          ? 'h-16 bg-background/90 backdrop-blur-md border-b border-border/20 shadow-sm text-foreground'
-          : 'h-20 bg-transparent text-white',
+          ? 'h-14 bg-black/95 backdrop-blur-sm border-b border-neutral-900'
+          : 'h-20 bg-transparent',
         className
       )}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-full">
+      <div className="container mx-auto px-8 md:px-16 lg:px-24 flex items-center justify-between h-full">
         <button 
-          onClick={() => window.location.reload()}
-          className="flex items-center transition-opacity hover:opacity-80 h-full"
+          onClick={() => scrollToSection('home')}
+          className="flex items-center transition-opacity hover:opacity-70 h-full"
         >
           <img 
-            src="/assets/850bdd41-c8a0-41b8-b1a0-fa05f418aabb.png" 
-            alt="BAI" 
-            className="h-12 w-auto object-contain px-2"
-            style={{ maxWidth: 'none' }}
+            src="/assets/logo-dark.png" 
+            alt="Sequence Markets" 
+            className="h-8 w-auto object-contain"
           />
         </button>
         
-        <div className="hidden md:flex items-center space-x-8">
-          <NavLinks scrollToSection={scrollToSection} isScrolled={isScrolled} />
+        <div className="hidden md:flex items-center space-x-10">
+          <NavLinks scrollToSection={scrollToSection} />
         </div>
         
         <button 
-          className="md:hidden flex items-center text-inherit"
+          className="md:hidden flex items-center text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
           <span className={cn(
-            "block w-6 transition-all duration-300",
+            "block w-5 transition-all duration-300",
             isMobileMenuOpen ? "opacity-0" : "opacity-100"
           )}>
-            <span className="block w-6 h-0.5 bg-current mb-1.5" />
-            <span className="block w-6 h-0.5 bg-current mb-1.5" />
-            <span className="block w-4 h-0.5 bg-current" />
+            <span className="block w-5 h-[1px] bg-white mb-1.5" />
+            <span className="block w-5 h-[1px] bg-white mb-1.5" />
+            <span className="block w-3.5 h-[1px] bg-white" />
           </span>
         </button>
       </div>
@@ -100,80 +94,53 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       <div className={cn("md:hidden", isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none")}> 
         <div 
           className={cn(
-            "fixed inset-0 bg-black/50 z-40 transition-opacity duration-300",
+            "fixed inset-0 bg-black/90 z-40 transition-opacity duration-300",
             isMobileMenuOpen ? "opacity-100" : "opacity-0"
           )}
           onClick={() => setIsMobileMenuOpen(false)}
         />
         <div 
           className={cn(
-            "fixed top-0 right-0 h-[100svh] w-[88vw] max-w-sm bg-background z-50 flex flex-col pt-12 px-6 border-l border-border shadow-xl transition-transform duration-300 ease-in-out",
+            "fixed top-0 right-0 h-[100svh] w-[85vw] max-w-xs bg-black z-50 flex flex-col pt-14 px-8 border-l border-neutral-900 transition-transform duration-300 ease-in-out",
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-10">
             <img 
-              src="/assets/850bdd41-c8a0-41b8-b1a0-fa05f418aabb.png" 
-              alt="BAI" 
-              className="h-8 w-auto object-contain"
-              style={{ maxWidth: 'none' }}
+              src="/assets/logo-dark.png" 
+              alt="Sequence Markets" 
+              className="h-6 w-auto object-contain"
             />
             <button 
               className="p-2"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Close menu"
             >
-              <span className="block w-6 h-0.5 bg-foreground transform rotate-45 translate-y-0.5" />
-              <span className="block w-6 h-0.5 bg-foreground transform -rotate-45" />
+              <span className="block w-5 h-[1px] bg-white transform rotate-45 translate-y-[1px]" />
+              <span className="block w-5 h-[1px] bg-white transform -rotate-45" />
             </button>
           </div>
         
-        <nav className="flex flex-col space-y-6 text-lg">
-          <button 
-            className="text-left hover:opacity-80 transition-colors"
-            onClick={() => {
-              scrollToSection('home');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Home
-          </button>
-          <button 
-            className="text-left hover:opacity-80 transition-colors"
-            onClick={() => {
-              scrollToSection('about');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Our Firm
-          </button>
-          <button 
-            className="text-left hover:opacity-80 transition-colors"
-            onClick={() => {
-              scrollToSection('what-we-do');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Our Approach
-          </button>
-          <button 
-            className="text-left hover:opacity-80 transition-colors"
-            onClick={() => {
-              scrollToSection('technology');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Technology
-          </button>
-          <button 
-            className="text-left hover:opacity-80 transition-colors"
-            onClick={() => {
-              scrollToSection('team');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Our Team
-          </button>
+        <nav className="flex flex-col space-y-5">
+          {[
+            { id: 'home', label: 'Home' },
+            { id: 'about', label: 'About' },
+            { id: 'what-we-do', label: 'Products' },
+            { id: 'technology', label: 'Technology' },
+            { id: 'team', label: 'Team' },
+            { id: 'contact', label: 'Contact' },
+          ].map((item) => (
+            <button 
+              key={item.id}
+              className="text-left text-white hover:text-neutral-500 transition-colors uppercase tracking-[0.2em] text-[11px] font-normal"
+              onClick={() => {
+                scrollToSection(item.id);
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
         </div>
       </div>
@@ -183,15 +150,15 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
 
 interface NavLinksProps {
   scrollToSection: (id: string) => void;
-  isScrolled: boolean;
 }
 
-const NavLinks: React.FC<NavLinksProps> = ({ scrollToSection, isScrolled }) => {
+const NavLinks: React.FC<NavLinksProps> = ({ scrollToSection }) => {
   const navItems = [
-    { id: 'about', label: 'Our Firm' },
-    { id: 'what-we-do', label: 'Our Approach' },
+    { id: 'about', label: 'About' },
+    { id: 'what-we-do', label: 'Products' },
     { id: 'technology', label: 'Technology' },
-    { id: 'team', label: 'Our Team' },
+    { id: 'team', label: 'Team' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (
@@ -200,10 +167,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ scrollToSection, isScrolled }) => {
         <button
           key={item.id}
           onClick={() => scrollToSection(item.id)}
-          className={cn(
-            "text-sm font-medium transition-colors",
-            isScrolled ? "text-foreground hover:opacity-80" : "text-white hover:opacity-80"
-          )}
+          className="text-[11px] font-normal text-white hover:text-neutral-500 transition-colors uppercase tracking-[0.2em]"
         >
           {item.label}
         </button>

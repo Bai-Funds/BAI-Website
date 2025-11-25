@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import FadeIn from './animations/FadeIn';
 
 interface HeroProps {
   className?: string;
@@ -8,64 +7,37 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ className }) => {
   return (
-    <section className={cn('relative w-full h-[100svh] hero-hide-background overflow-hidden z-[60]', className)}>
-      <div className="absolute inset-0 -z-10 w-full h-[100svh]">
-        {/* Video Background */}
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          preload="metadata"
-          poster="/og-image.png"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'none' }}
-        >
-          <source src="/BAI Logo Office.mp4" type="video/mp4" />
-          {/* Fallback gradient if video doesn't load */}
-        </video>
-        
-        {/* Lighter overlay to show video better */}
-        <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
-        
-        {/* No animated nodes in hero to keep video layer clean */}
-      </div>
-      
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div className="container mx-auto container-padding py-16 md:py-24 max-w-6xl text-center">
-          <div className="max-w-5xl mx-auto text-center space-y-8 md:space-y-12">
-            {/* Logo removed from hero section */}
+    <section className={cn('relative w-full min-h-[100svh] bg-black overflow-hidden', className)}>
+      <div className="absolute inset-0 flex items-center">
+        <div className="container mx-auto px-8 md:px-16 lg:px-24 py-32">
+          <div className="max-w-5xl animate-fade-in">
+            <p className="text-[11px] md:text-xs text-neutral-500 uppercase tracking-[0.4em] font-normal mb-10">
+              Execution Infrastructure
+            </p>
+
+            <h1 className="text-[3.5rem] md:text-[5.5rem] lg:text-[7rem] font-bold tracking-[-0.02em] text-white leading-[0.9] mb-12">
+              The Execution OS<br />
+              <span className="text-neutral-600">for Digital Assets</span>
+            </h1>
             
-            <FadeIn delay={200}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-tight text-white leading-tight text-balance drop-shadow-lg">
-                Advancing Quantitative<br />
-                Strategies Through<br />
-                AI Innovation
-              </h1>
-            </FadeIn>
+            <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-xl mb-14 font-normal">
+              Venue-neutral smart order routing for crypto and tokenised assets. We connect to global liquidity, evaluate real-time depth, fees and latency, and execute with precision.
+            </p>
             
-            <FadeIn delay={300}>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-4xl mx-auto text-balance font-normal drop-shadow-md">
-                We develop and deploy sophisticated multi-agent AI systems that systematically analyze markets, identify opportunities, and execute strategies with institutional-grade precision and scale.
-              </p>
-            </FadeIn>
-            
-            <FadeIn delay={400}>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-4">
-                <a 
-                  href="#what-we-do"
-                  className="bg-white text-bai-primary font-semibold text-lg px-8 py-4 rounded-xl hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 focus-visible"
-                >
-                  Our Approach
-                </a>
-                <a 
-                  href="#team"
-                  className="border-2 border-white text-white font-semibold text-lg px-8 py-4 rounded-xl hover:bg-white hover:text-bai-primary transition-all duration-300 transform hover:scale-105 focus-visible"
-                >
-                  Our Team
-                </a>
-              </div>
-            </FadeIn>
+            <div className="flex flex-wrap gap-4">
+              <a 
+                href="#what-we-do"
+                className="inline-block border border-white text-white font-normal text-[11px] uppercase tracking-[0.2em] px-7 py-3.5 hover:bg-white hover:text-black transition-all duration-200"
+              >
+                What We Do
+              </a>
+              <a 
+                href="#contact"
+                className="inline-block border border-neutral-700 text-neutral-400 font-normal text-[11px] uppercase tracking-[0.2em] px-7 py-3.5 hover:border-neutral-500 hover:text-white transition-all duration-200"
+              >
+                Contact
+              </a>
+            </div>
           </div>
         </div>
       </div>
