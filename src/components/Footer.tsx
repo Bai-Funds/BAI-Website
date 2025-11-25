@@ -28,23 +28,23 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
   };
 
   return (
-    <footer className={cn('py-14 bg-black border-t border-neutral-900', className)}>
-      <div className="container mx-auto px-8 md:px-16 lg:px-24">
+    <footer className={cn('py-14 bg-gray-50/80 border-t border-gray-200', className)}>
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-14">
           <div>
             <img 
-              src="/assets/logo-dark.png" 
+              src="/assets/logo-light.png" 
               alt="Sequence Markets" 
-              className="h-8 w-auto object-contain mb-5"
+              className="h-10 w-auto object-contain mb-5"
             />
-            <p className="text-neutral-600 text-xs max-w-xs font-normal leading-relaxed">
+            <p className="text-gray-500 text-sm max-w-xs font-normal leading-relaxed">
               The Execution OS for Digital Assets. Venue-neutral smart order routing for crypto and tokenised markets.
             </p>
           </div>
           
           <div className="grid grid-cols-2 gap-x-16 gap-y-8">
             <div>
-              <h4 className="text-white text-[11px] font-normal uppercase tracking-[0.3em] mb-4">Company</h4>
+              <h4 className="text-gray-900 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Company</h4>
               <div className="flex flex-col space-y-3">
                 {[
                   { id: 'about', label: 'About' },
@@ -54,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-xs text-neutral-600 hover:text-white transition-colors text-left font-normal"
+                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors text-left font-normal"
                   >
                     {item.label}
                   </button>
@@ -62,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               </div>
             </div>
             <div>
-              <h4 className="text-white text-[11px] font-normal uppercase tracking-[0.3em] mb-4">Platform</h4>
+              <h4 className="text-gray-900 text-xs font-semibold uppercase tracking-[0.3em] mb-4">Platform</h4>
               <div className="flex flex-col space-y-3">
                 {[
                   { id: 'what-we-do', label: 'Products' },
@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="text-xs text-neutral-600 hover:text-white transition-colors text-left font-normal"
+                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors text-left font-normal"
                   >
                     {item.label}
                   </button>
@@ -82,13 +82,13 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           </div>
         </div>
         
-        <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-[11px] text-neutral-700 font-normal">
+        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-sm text-gray-400 font-normal">
             &copy; {new Date().getFullYear()} Sequence Markets. All rights reserved.
           </div>
           <a 
             href="mailto:team@baifunds.com"
-            className="text-[11px] text-neutral-600 hover:text-white transition-colors font-normal"
+            className="text-sm text-gray-500 hover:text-gray-900 transition-colors font-normal"
           >
             team@baifunds.com
           </a>

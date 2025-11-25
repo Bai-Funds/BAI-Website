@@ -8,6 +8,7 @@ import TechnologyPlatform from '@/components/TechnologyPlatform';
 import About from '@/components/About';
 import Community from '@/components/Community';
 import Footer from '@/components/Footer';
+import CryptoTicker from '@/components/CryptoTicker';
 
 const Index = () => {
   useEffect(() => {
@@ -40,16 +41,21 @@ const Index = () => {
   }, []);
   
   return (
-    <main className="bg-black">
-      <Header />
-      <Hero />
-      <About />
-      <Manifesto />
-      <Gap />
-      <TechnologyPlatform />
-      <FoundersInSearch />
-      <Community />
-      <Footer />
+    <main className="w-full overflow-x-hidden relative bg-white">
+      {/* Crypto ticker at bottom - always visible */}
+      <CryptoTicker />
+      
+      <div className="relative z-10">
+        <Header />
+        <Hero />
+        <About />
+        <Manifesto />
+        <Gap />
+        <TechnologyPlatform />
+        <FoundersInSearch />
+        <Community />
+        <Footer />
+      </div>
     </main>
   );
 };
