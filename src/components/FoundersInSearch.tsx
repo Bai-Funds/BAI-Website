@@ -49,7 +49,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
     {
       name: "Josephina Kim",
       role: "Head of Execution Research",
-      degree: "B.Sc. CS (Waterloo) & B.B.A. (Laurier)",
+      degree: "B.Sc. Computer Science (Waterloo) & B.B.A. (Laurier)",
       logoPrimary: "/assets/Waterloo Logo.png",
       logoSecondary: "/assets/Laurier Logo.png",
       fullDescription:
