@@ -55,10 +55,10 @@ const CodeRain: React.FC = () => {
       return {
         id,
         text,
-        // Position on sides only - avoid center content area
+        // Position on sides only - avoid center content area (25-75% is content zone)
         x: side === 'left' 
-          ? 3 + Math.random() * 20  // 3% to 23% from left
-          : 77 + Math.random() * 20, // 77% to 97% from left
+          ? 2 + Math.random() * 18  // 2% to 20% from left (well clear of center)
+          : 80 + Math.random() * 18, // 80% to 98% from left (well clear of center)
         y: startY ?? Math.random() * 100,
         displayLength: 0,
         maxLength: text.length,
@@ -107,7 +107,7 @@ const CodeRain: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none font-mono">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none font-mono z-0">
       {lines.map(line => (
         <div
           key={line.id}

@@ -10,8 +10,10 @@ interface TechnologyPlatformProps {
 const TechnologyPlatform: React.FC<TechnologyPlatformProps> = ({ className }) => {
   return (
     <section id="technology" className={cn('pt-8 pb-28 md:pt-10 md:pb-36 bg-white relative overflow-hidden', className)}>
-      {/* Code snippets typing in background */}
-      <CodeRain />
+      {/* Code snippets typing in background - behind content */}
+      <div className="absolute inset-0 z-0">
+        <CodeRain />
+      </div>
       <div className="container mx-auto relative z-10">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
