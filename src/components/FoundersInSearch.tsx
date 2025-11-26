@@ -162,34 +162,42 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
                           />
                         </div>
                         {/* Logos - centered below photo, same width as photo */}
-                        <div className="flex flex-col items-center gap-4 w-44">
+                        <div className="flex flex-col items-center gap-6 w-44">
                           {member.logoPrimary && (
-                            <img
-                              src={member.logoPrimary}
-                              alt="School"
-                              className="w-full h-auto object-contain"
-                            />
+                            <div className="w-full flex items-center justify-center py-2">
+                              <img
+                                src={member.logoPrimary}
+                                alt="School"
+                                className="w-full h-auto object-contain max-h-12"
+                              />
+                            </div>
                           )}
                           {member.logoSecondary && (
-                            <img
-                              src={member.logoSecondary}
-                              alt="School"
-                              className="w-full h-auto object-contain"
-                            />
+                            <div className="w-full flex items-center justify-center py-2">
+                              <img
+                                src={member.logoSecondary}
+                                alt="School"
+                                className="w-full h-auto object-contain max-h-12"
+                              />
+                            </div>
                           )}
                           {member.logoTertiary && (
-                            <img
-                              src={member.logoTertiary}
-                              alt="School"
-                              className="w-full h-auto object-contain"
-                            />
+                            <div className="w-full flex items-center justify-center py-2">
+                              <img
+                                src={member.logoTertiary}
+                                alt="School"
+                                className="w-full h-auto object-contain max-h-12"
+                              />
+                            </div>
                           )}
                           {member.logoQuaternary && (
-                            <img
-                              src={member.logoQuaternary}
-                              alt="Company"
-                              className="w-full h-auto object-contain"
-                            />
+                            <div className="w-full flex items-center justify-center py-2">
+                              <img
+                                src={member.logoQuaternary}
+                                alt="Company"
+                                className="w-full h-auto object-contain max-h-12"
+                              />
+                            </div>
                           )}
                         </div>
                       </div>
