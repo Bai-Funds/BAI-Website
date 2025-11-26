@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoMarqueeProps {
@@ -9,6 +9,45 @@ interface LogoMarqueeProps {
 const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }) => {
   const [isPaused, setIsPaused] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number>();
+  const resumeTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Auto-scroll animation using scrollLeft (allows manual scrolling)
+  useEffect(() => {
+    if (isPaused || !scrollContainerRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const oneSetWidth = scrollWidth / 5; // We have 5 copies
+
+    const animate = () => {
+      if (!scrollContainerRef.current || isPaused) return;
+
+      const currentScroll = scrollContainerRef.current.scrollLeft;
+      
+      // If we've scrolled past one set, reset to start of next identical set
+      if (currentScroll >= oneSetWidth) {
+        scrollContainerRef.current.scrollLeft = currentScroll - oneSetWidth;
+      } else {
+        // Smoothly scroll forward
+        scrollContainerRef.current.scrollLeft += 0.5;
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+    };
+  }, [isPaused]);
 
   // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
   const logos = [
@@ -51,10 +90,7 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
         {/* Scrolling logos - scrollable with mouse wheel/touch */}
         <div 
           ref={scrollContainerRef}
-          className={cn(
-            "flex overflow-x-auto scrollbar-hide",
-            !isPaused && "animate-scroll-left"
-          )}
+          className="flex overflow-x-auto scrollbar-hide"
           style={{ 
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -67,12 +103,18 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
               scrollContainerRef.current.scrollLeft += e.deltaY;
               setIsPaused(true);
               // Resume after 2 seconds of no interaction
-              setTimeout(() => setIsPaused(false), 2000);
+              if (resumeTimeoutRef.current) {
+                clearTimeout(resumeTimeoutRef.current);
+              }
+              resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 2000);
             }
           }}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => {
-            setTimeout(() => setIsPaused(false), 2000);
+            if (resumeTimeoutRef.current) {
+              clearTimeout(resumeTimeoutRef.current);
+            }
+            resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 2000);
           }}
         >
           {duplicatedLogos.map((logo, index) => (
