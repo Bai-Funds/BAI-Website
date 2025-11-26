@@ -55,7 +55,7 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
             className="flex animate-scroll-left" 
             style={{ 
               width: 'fit-content',
-              animationDelay: `-${(randomStart / 16.666666) * 38}s`
+              animationDelay: `-${(randomStart / 16.666666) * 42}s`
             }}
           >
             {duplicatedLogos.map((logo, index) => (
