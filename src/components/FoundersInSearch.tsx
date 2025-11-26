@@ -12,7 +12,10 @@ interface FoundersInSearchProps {
 const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const teamMembers = [
+  // Feature flag: Set to true to show Zilong Bai
+  const SHOW_ZILONG_BAI = false;
+
+  const allTeamMembers = [
     {
       name: "Peter Bai",
       role: "CEO",
@@ -66,6 +69,11 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       linkedin: "https://www.linkedin.com/in/zilong-bai-72a227133/",
     },
   ];
+
+  // Filter team members based on feature flag
+  const teamMembers = allTeamMembers.filter(member => 
+    member.name !== "Zilong Bai" || SHOW_ZILONG_BAI
+  );
 
   return (
     <section id="team" className={cn('pt-16 pb-28 md:pt-20 md:pb-36 bg-gray-50', className)}>
