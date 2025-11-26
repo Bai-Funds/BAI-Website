@@ -10,8 +10,10 @@ interface GapProps {
 const Gap: React.FC<GapProps> = ({ className }) => {
   return (
     <section id="how-it-works" className={cn('py-28 md:py-36 bg-gray-50 relative overflow-hidden', className)}>
-      {/* Infinity loop - feedback visualization */}
-      <InfinityLoop />
+      {/* Infinity loop - feedback visualization - subtle */}
+      <div className="opacity-50">
+        <InfinityLoop />
+      </div>
       <div className="container mx-auto relative z-10">
         <div className="max-w-5xl mx-auto">
           <FadeIn>

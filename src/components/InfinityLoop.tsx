@@ -2,15 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 const InfinityLoop: React.FC = () => {
   const [offset, setOffset] = useState(0);
-  const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    let time = 0;
     const animate = () => {
-      time += 0.02;
       setOffset(prev => (prev + 1) % 1000);
-      // Gentle breathing effect - scale between 0.85 and 1.15
-      setScale(1 + Math.sin(time) * 0.15);
     };
     const interval = setInterval(animate, 30);
     return () => clearInterval(interval);
@@ -18,51 +13,50 @@ const InfinityLoop: React.FC = () => {
 
   return (
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+      {/* Fixed labels outside */}
+      <div className="absolute left-[12%] top-1/2 -translate-y-1/2 text-[10px] font-mono text-gray-300 opacity-40">
+        IN
+      </div>
+      <div className="absolute right-[12%] top-1/2 -translate-y-1/2 text-[10px] font-mono text-gray-300 opacity-40">
+        OUT
+      </div>
+      
       <svg
-        width="90%"
-        height="90%"
+        width="70%"
+        height="70%"
         viewBox="0 0 400 200"
-        className="opacity-8"
-        style={{ transform: `scale(${scale})`, transition: 'transform 0.03s linear' }}
+        className="opacity-6"
       >
-        <defs>
-          <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#333" stopOpacity="0.1" />
-            <stop offset="50%" stopColor="#333" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#333" stopOpacity="0.1" />
-          </linearGradient>
-        </defs>
-        
-        {/* Main infinity symbol - larger, centered */}
+        {/* Main infinity symbol - static size */}
         <path
           d="M 100 100 
              C 100 50, 150 50, 200 100 
              C 250 150, 300 150, 300 100 
              C 300 50, 250 50, 200 100 
              C 150 150, 100 150, 100 100"
-          stroke="#ddd"
-          strokeWidth="2"
+          stroke="#e0e0e0"
+          strokeWidth="1.5"
           fill="none"
           strokeLinecap="round"
         />
         
-        {/* Animated flowing line on infinity */}
+        {/* Animated flowing line on infinity - this is the feedback flow */}
         <path
           d="M 100 100 
              C 100 50, 150 50, 200 100 
              C 250 150, 300 150, 300 100 
              C 300 50, 250 50, 200 100 
              C 150 150, 100 150, 100 100"
-          stroke="#888"
-          strokeWidth="3"
+          stroke="#999"
+          strokeWidth="2.5"
           fill="none"
           strokeLinecap="round"
-          strokeDasharray="40 360"
+          strokeDasharray="35 365"
           strokeDashoffset={-offset}
-          opacity="0.4"
+          opacity="0.35"
         />
         
-        {/* Second flowing line (offset) */}
+        {/* Second flowing line (offset) for continuous flow */}
         <path
           d="M 100 100 
              C 100 50, 150 50, 200 100 
@@ -70,17 +64,13 @@ const InfinityLoop: React.FC = () => {
              C 300 50, 250 50, 200 100 
              C 150 150, 100 150, 100 100"
           stroke="#aaa"
-          strokeWidth="2"
+          strokeWidth="1.5"
           fill="none"
           strokeLinecap="round"
-          strokeDasharray="25 375"
+          strokeDasharray="20 380"
           strokeDashoffset={-offset - 200}
-          opacity="0.25"
+          opacity="0.2"
         />
-        
-        {/* Subtle labels */}
-        <text x="55" y="105" fill="#ccc" fontSize="8" fontFamily="monospace" opacity="0.3">IN</text>
-        <text x="330" y="105" fill="#ccc" fontSize="8" fontFamily="monospace" opacity="0.3">OUT</text>
       </svg>
     </div>
   );

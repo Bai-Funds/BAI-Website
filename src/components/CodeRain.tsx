@@ -115,7 +115,7 @@ const CodeRain: React.FC = () => {
           style={{
             left: `${line.x}%`,
             top: `${line.y}%`,
-            opacity: 0.12,
+            opacity: 0.18,
             color: '#555',
             transform: line.side === 'left' ? 'translateX(0)' : 'translateX(-100%)',
           }}

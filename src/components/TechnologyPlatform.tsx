@@ -9,7 +9,7 @@ interface TechnologyPlatformProps {
 
 const TechnologyPlatform: React.FC<TechnologyPlatformProps> = ({ className }) => {
   return (
-    <section id="technology" className={cn('pt-16 pb-28 md:pt-20 md:pb-36 bg-white relative overflow-hidden', className)}>
+    <section id="technology" className={cn('pt-8 pb-28 md:pt-10 md:pb-36 bg-white relative overflow-hidden', className)}>
       {/* Code snippets typing in background */}
       <CodeRain />
       <div className="container mx-auto relative z-10">
