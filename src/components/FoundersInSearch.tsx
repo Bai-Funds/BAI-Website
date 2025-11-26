@@ -37,14 +37,16 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       linkedin: "https://www.linkedin.com/in/muhammad-awan0",
     },
     {
-      name: "Frank Zou",
-      role: "Market Structure & Business Development",
-      degree: "B.MOS, Finance (Huron, Western); Advanced Entry Opportunity to Ivey Business School",
-      logoPrimary: "/assets/Huron Logo.png",
+      name: "Zilong Bai",
+      role: "AI & ML Advisor",
+      degree: "Ph.D., Computer Science (UC Davis); M.Eng., Information & Communication Engineering (USTC); B.Eng., Electronic Information Engineering (USTC)",
+      logoPrimary: "/assets/Cornell Medicine Logo.png",
+      logoSecondary: "/assets/UC Davis Logo.png",
+      logoTertiary: "/assets/university of science and technology of china logo.png",
       fullDescription:
-        "Frank Zou leads Market Structure & Business Development at Sequence Markets. He leads market structure research, trading strategy research, and business development, managing industry networking, outreach, and direct industry connections. Frank previously worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules. He also helped lead communications and partnerships for student investment organizations at Western University. Frank is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status.",
-      image: "/assets/Frank HeadShot.png",
-      linkedin: "https://www.linkedin.com/in/fzou26/",
+        "Zilong Bai serves as AI & ML Advisor at Sequence Markets. He advises the firm's machine learning program, shaping research best practices, reviewing model specifications, and guiding the use of data mining and applied ML methods for market data. Zilong is a Research Associate at Weill Cornell Medicine. He focuses on graph modeling, multimodal learning, and rigorous evaluation standards. Zilong holds a Ph.D. in Computer Science from UC Davis with first-author work across leading venues, including Science Translational Medicine, KDD, and NPJ.",
+      image: "/assets/Zilong HeadShot.png",
+      linkedin: "https://www.linkedin.com/in/zilong-bai-72a227133/",
     },
     {
       name: "Josephina Kim",
@@ -58,16 +60,14 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       linkedin: "https://www.linkedin.com/in/josephina-kim/",
     },
     {
-      name: "Zilong Bai",
-      role: "AI & ML Advisor",
-      degree: "Ph.D., Computer Science (UC Davis); M.Eng., Information & Communication Engineering (USTC); B.Eng., Electronic Information Engineering (USTC)",
-      logoPrimary: "/assets/Cornell Medicine Logo.png",
-      logoSecondary: "/assets/UC Davis Logo.png",
-      logoTertiary: "/assets/university of science and technology of china logo.png",
+      name: "Frank Zou",
+      role: "Market Structure & Business Development",
+      degree: "B.MOS, Finance (Huron, Western); Advanced Entry Opportunity to Ivey Business School",
+      logoPrimary: "/assets/Huron Logo.png",
       fullDescription:
-        "Zilong Bai serves as AI & ML Advisor at Sequence Markets. He advises the firm's machine learning program, shaping research best practices, reviewing model specifications, and guiding the use of data mining and applied ML methods for market data. Zilong is a Research Associate at Weill Cornell Medicine. He focuses on graph modeling, multimodal learning, and rigorous evaluation standards. Zilong holds a Ph.D. in Computer Science from UC Davis with first-author work across leading venues, including Science Translational Medicine, KDD, and NPJ.",
-      image: "/assets/Zilong HeadShot.png",
-      linkedin: "https://www.linkedin.com/in/zilong-bai-72a227133/",
+        "Frank Zou leads Market Structure & Business Development at Sequence Markets. He leads market structure research, trading strategy research, and business development, managing industry networking, outreach, and direct industry connections. Frank previously worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules. He also helped lead communications and partnerships for student investment organizations at Western University. Frank is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status.",
+      image: "/assets/Frank HeadShot.png",
+      linkedin: "https://www.linkedin.com/in/fzou26/",
     },
   ];
 
