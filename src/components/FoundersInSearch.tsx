@@ -63,6 +63,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       degree: "Ph.D., Computer Science (UC Davis); M.Eng., Information & Communication Engineering (USTC); B.Eng., Electronic Information Engineering (USTC)",
       logoPrimary: "/assets/UC Davis Logo.png",
       logoSecondary: "/assets/university of science and technology of china logo.png",
+      logoTertiary: "/assets/Cornell Medicine Logo.png",
       fullDescription:
         "Zilong Bai serves as AI & ML Advisor at Sequence Markets. He advises the firm's machine learning program, shaping research best practices, reviewing model specifications, and guiding the use of data mining and applied ML methods for market data. Zilong is a Research Associate at Weill Cornell Medicine. He focuses on graph modeling, multimodal learning, and rigorous evaluation standards. Zilong holds a Ph.D. in Computer Science from UC Davis with first-author work across leading venues, including Science Translational Medicine, KDD, and NPJ.",
       image: "/assets/Zilong HeadShot.png",
@@ -166,6 +167,13 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
                           {member.logoSecondary && (
                             <img
                               src={member.logoSecondary}
+                              alt="School"
+                              className="w-full h-auto object-contain"
+                            />
+                          )}
+                          {member.logoTertiary && (
+                            <img
+                              src={member.logoTertiary}
                               alt="School"
                               className="w-full h-auto object-contain"
                             />
