@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoMarqueeProps {
@@ -7,6 +7,8 @@ interface LogoMarqueeProps {
 }
 
 const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }) => {
+  // Random starting position (0-16.666%) so it doesn't always start from the beginning
+  const randomStart = useMemo(() => Math.random() * 16.666666, []);
 
   // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
   const logos = [
@@ -49,7 +51,13 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
         
         {/* Scrolling logos - CSS animation with hover pause */}
         <div className="overflow-hidden">
-          <div className="flex animate-scroll-left" style={{ width: 'fit-content' }}>
+          <div 
+            className="flex animate-scroll-left" 
+            style={{ 
+              width: 'fit-content',
+              animationDelay: `-${(randomStart / 16.666666) * 35}s`
+            }}
+          >
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={index}
