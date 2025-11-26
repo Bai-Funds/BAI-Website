@@ -21,6 +21,8 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       role: "CEO",
       degree: "B.A., Honors Business Administration (Ivey Business School, Western)",
       logoPrimary: "/assets/Ivey Logo.png",
+      logoSecondary: "/assets/upp-logo-c.png",
+      logoTertiary: "/assets/TMX Logo.png",
       fullDescription:
         "Peter Bai co-founded Sequence Markets and serves as CEO. He leads quantitative strategy research for market structure, trading, and high-performance trading systems, and leads algorithmic development prototyping and organizational strategy. He works closely with the CTO to develop and set up backend and execution infrastructure, including cloud computing, large language modeling research and setup, and physical co-location server building. Peter previously worked as a quant developer on the Macro Trading Desk at University Pension Plan Ontario, covering FX, equity TRS, and repo within a $13B AUM portfolio. Earlier, he was an Equity Markets quant at TMX Group focused on trading infrastructure and technology, and he spent time in venture capital at HCS Capital evaluating fintech and insurtech co-investments. Peter is an Ivey HBA student at Western University.",
       image: "/assets/Peter HeadShot.png",
@@ -31,6 +33,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       role: "CTO",
       degree: "B.Sc., Computer Science (Waterloo)",
       logoPrimary: "/assets/Waterloo Logo.png",
+      logoSecondary: "/assets/Boardy Logo.png",
       fullDescription:
         "Muhammad Awan serves as CTO of Sequence Markets. He owns high-performance systems development, writing and maintaining the execution infrastructure and turning prototypes into optimized production code. He works closely with the CEO to develop and set up backend and execution infrastructure, including cloud computing, large language modeling research and setup, and physical co-location server building. Muhammad is a Founding Machine Learning Engineer at Boardy AI, building production ML systems for digital human interaction. He previously built ML pipelines at UTEX Scientific Instruments and contributed to autonomous vehicle perception at WATonomous and path planning at MIT-PITT-RW. Muhammad is a Computer Science student at the University of Waterloo.",
       image: "/assets/Muhammad HeadShot.png",
@@ -54,6 +57,8 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       degree: "B.Sc., Computer Science (Waterloo) & B.B.A., Business Administration (Laurier)",
       logoPrimary: "/assets/Waterloo Logo.png",
       logoSecondary: "/assets/Laurier Logo.png",
+      logoTertiary: "/assets/rbccm_logo.png",
+      logoQuaternary: "/assets/BMO_Capital_Markets_logo.svg.png",
       fullDescription:
         "Josephina Kim leads Capital & Investor Relations at Sequence Markets. She leads fundraising and investor relations, bringing deep understanding of market structure and institutional needs, and leverages her venture-based connections and institutional relationships to drive capital formation. Josephina is currently working as an electronic trader and AI researcher at RBC Capital Markets in New York. She previously worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading, and as a venture capital analyst at Render Capital evaluating early-stage technology investments. Josephina is a Schulich Leader Scholar pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University.",
       image: "/assets/Josephina HeadShot.png",
@@ -64,6 +69,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
       role: "Market Structure & Business Development",
       degree: "B.MOS, Finance (Huron, Western); Advanced Entry Opportunity to Ivey Business School",
       logoPrimary: "/assets/Huron Logo.png",
+      logoSecondary: "/assets/TMX Logo.png",
       fullDescription:
         "Frank Zou leads Market Structure & Business Development at Sequence Markets. He leads market structure research, trading strategy research, and business development, managing industry networking, outreach, and direct industry connections. Frank previously worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules. He also helped lead communications and partnerships for student investment organizations at Western University. Frank is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status.",
       image: "/assets/Frank HeadShot.png",
@@ -175,6 +181,13 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
                             <img
                               src={member.logoTertiary}
                               alt="School"
+                              className="w-full h-auto object-contain"
+                            />
+                          )}
+                          {member.logoQuaternary && (
+                            <img
+                              src={member.logoQuaternary}
+                              alt="Company"
                               className="w-full h-auto object-contain"
                             />
                           )}
