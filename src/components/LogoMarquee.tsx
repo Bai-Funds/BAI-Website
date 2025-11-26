@@ -25,7 +25,8 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
 
   // Duplicate logos many times for truly seamless infinite loop (no visible reset)
   // We need enough copies so that when one set scrolls out, the next identical set is already in view
-  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos];
+  // Using 6 copies for smoother seamless loop
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
 
   const content = (
     <>
@@ -47,26 +48,28 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
         <div className={cn("absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none", embedded ? "bg-gradient-to-l from-gray-50 to-transparent" : "bg-gradient-to-l from-white to-transparent")} />
         
         {/* Scrolling logos - CSS animation with hover pause */}
-        <div className="flex animate-scroll-left overflow-hidden">
-          {duplicatedLogos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 flex items-center justify-center px-8 md:px-12"
-              style={{ width: '280px', height: '80px' }}
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                style={{ 
-                  height: '64px',
-                  width: 'auto',
-                  objectFit: 'contain',
-                  maxWidth: '100%'
-                }}
-              />
-            </div>
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex animate-scroll-left" style={{ width: 'fit-content' }}>
+            {duplicatedLogos.map((logo, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 flex items-center justify-center px-8 md:px-12"
+                style={{ width: '280px', height: '80px' }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  style={{ 
+                    height: '64px',
+                    width: 'auto',
+                    objectFit: 'contain',
+                    maxWidth: '100%'
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

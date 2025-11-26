@@ -869,7 +869,7 @@ html.dark ::-webkit-scrollbar-thumb {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-20%);
+    transform: translateX(-16.666666%);
   }
 }
 
