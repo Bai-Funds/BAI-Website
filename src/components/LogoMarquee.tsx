@@ -7,40 +7,23 @@ interface LogoMarqueeProps {
 }
 
 const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }) => {
-  // Most prestigious first, staggered: Schools and Companies alternating
+  // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
   const logos = [
-    // School - Ivy League
-    { src: '/assets/Cornell Medicine Logo.png', alt: 'Cornell Medicine' },
-    // Company - Major Canadian Bank
-    { src: '/assets/rbccm_logo.png', alt: 'RBC Capital Markets' },
-    // School - Top Public University
-    { src: '/assets/UC Davis Logo.png', alt: 'UC Davis' },
-    // Company - Major Pension Fund
-    { src: '/assets/CPP_Investment_Board_Logo.svg.png', alt: 'CPP Investments' },
-    // School - Top Canadian Engineering/CS
-    { src: '/assets/Waterloo Logo.png', alt: 'University of Waterloo' },
-    // Company - Major Pension Fund
-    { src: "/assets/Ontario_Teachers'_Pension_Plan_logo_2021.svg.png", alt: 'Ontario Teachers Pension Plan' },
-    // School - Top Canadian Business School
-    { src: '/assets/Ivey Logo.png', alt: 'Ivey Business School' },
-    // Company - Major Canadian Bank
-    { src: '/assets/BMO_Capital_Markets_logo.svg.png', alt: 'BMO Capital Markets' },
-    // School - Top Chinese University
-    { src: '/assets/university of science and technology of china logo.png', alt: 'USTC' },
-    // Company - Major Exchange
-    { src: '/assets/TMX Logo.png', alt: 'TMX Group' },
-    // School - Canadian Business School
-    { src: '/assets/Laurier Logo.png', alt: 'Wilfrid Laurier University' },
-    // Company - Pension Plan
-    { src: '/assets/upp-logo-c.png', alt: 'UPP' },
-    // School - University College
-    { src: '/assets/Huron Logo.png', alt: 'Huron University College' },
-    // Company - Startup
     { src: '/assets/Boardy Logo.png', alt: 'Boardy AI' },
+    { src: '/assets/TMX Logo.png', alt: 'TMX Group' },
+    { src: '/assets/Ivey Logo.png', alt: 'Ivey Business School' },
+    { src: '/assets/rbccm_logo.png', alt: 'RBC Capital Markets' },
+    { src: '/assets/Waterloo Logo.png', alt: 'University of Waterloo' },
+    { src: '/assets/Cornell Medicine Logo.png', alt: 'Cornell Medicine' },
+    { src: '/assets/BMO_Capital_Markets_logo.svg.png', alt: 'BMO Capital Markets' },
+    { src: '/assets/UC Davis Logo.png', alt: 'UC Davis' },
+    { src: '/assets/university of science and technology of china logo.png', alt: 'USTC' },
+    { src: '/assets/Huron Logo.png', alt: 'Huron University College (Western)' },
+    { src: '/assets/Laurier Logo.png', alt: 'Wilfrid Laurier University' },
   ];
 
-  // Duplicate logos for seamless loop
-  const duplicatedLogos = [...logos, ...logos];
+  // Duplicate logos multiple times for truly seamless infinite loop
+  const duplicatedLogos = [...logos, ...logos, ...logos];
 
   const content = (
     <>
