@@ -22,8 +22,9 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
     { src: '/assets/Laurier Logo.png', alt: 'Wilfrid Laurier University' },
   ];
 
-  // Duplicate logos multiple times for truly seamless infinite loop
-  const duplicatedLogos = [...logos, ...logos, ...logos];
+  // Duplicate logos many times for truly seamless infinite loop (no visible reset)
+  // We need enough copies so that when one set scrolls out, the next identical set is already in view
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos, ...logos];
 
   const content = (
     <>
