@@ -9,7 +9,7 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ className }) => {
   return (
-    <section id="about" className={cn('pt-20 pb-28 md:pt-24 md:pb-36 bg-gray-50 relative overflow-hidden', className)}>
+    <section id="about" className={cn('pt-12 pb-28 md:pt-16 md:pb-36 bg-gray-50 relative overflow-hidden', className)}>
       {/* Quote streams on sides */}
       <QuoteStream />
       <div className="container mx-auto relative z-10">
