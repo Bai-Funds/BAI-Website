@@ -38,22 +38,22 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
     },
     {
       name: "Frank Zou",
-      role: "Head of Business Development",
+      role: "Head of Market Structure & Business Development",
       degree: "B.MOS, Finance (Huron, Western); Advanced Entry Opportunity to Ivey Business School",
       logoPrimary: "/assets/Huron Logo.png",
       fullDescription:
-        "Frank leads capital and business development at Sequence Markets, managing LP outreach and diligence, fundraising pipeline management, and broker/venue interfaces that translate research into efficient trading. He is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status and a varsity rower. He has worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules, and he helped lead communications and partnerships for student investment organizations at Western University.",
+        "Frank leads market structure research, trading strategy research, and business development at Sequence Markets, managing industry networking, outreach, and direct industry connections. He is a Business student at Huron University (Western) with Ivey Advanced Entry Opportunity status and a varsity rower. He has worked in Equity Markets at TMX Group as a quantitative analyst conducting market structure research and focusing on product innovation and trading rules, and he helped lead communications and partnerships for student investment organizations at Western University.",
       image: "/assets/Frank HeadShot.png",
       linkedin: "https://www.linkedin.com/in/fzou26/",
     },
     {
       name: "Josephina Kim",
-      role: "Head of Execution Infrastructure",
+      role: "Head of Capital & Investor Relations",
       degree: "B.Sc., Computer Science (Waterloo) & B.B.A., Business Administration (Laurier)",
       logoPrimary: "/assets/Waterloo Logo.png",
       logoSecondary: "/assets/Laurier Logo.png",
       fullDescription:
-        "Josephina leads execution infrastructure and market structure at Sequence Markets, bringing deep expertise in institutional execution infrastructure, market structure insights, and sell-side flows. She is currently working as an electronic trader and AI researcher at RBC Capital Markets in New York. She is pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University and is a Schulich Leader Scholar. She previously worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading.",
+        "Josephina leads fundraising and investor relations at Sequence Markets, bringing deep understanding of market structure and institutional needs. She is currently working as an electronic trader and AI researcher at RBC Capital Markets in New York, giving her firsthand sell-side trading experience. She leverages her venture-based connections and institutional relationships to drive capital formation. She is pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University and is a Schulich Leader Scholar. She previously worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading.",
       image: "/assets/Josephina HeadShot.png",
       linkedin: "https://www.linkedin.com/in/josephina-kim/",
     },
