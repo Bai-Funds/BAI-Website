@@ -10,7 +10,7 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
   // Random starting position (0-16.666%) so it doesn't always start from the beginning
   const randomStart = useMemo(() => Math.random() * 16.666666, []);
 
-  // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
+  // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, UPP, Huron, Laurier
   const logos = [
     { src: '/assets/Boardy Logo.png', alt: 'Boardy AI' },
     { src: '/assets/TMX Logo.png', alt: 'TMX Group' },
@@ -21,6 +21,7 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
     { src: '/assets/BMO_Capital_Markets_logo.svg.png', alt: 'BMO Capital Markets' },
     { src: '/assets/UC Davis Logo.png', alt: 'UC Davis' },
     { src: '/assets/university of science and technology of china logo.png', alt: 'USTC' },
+    { src: '/assets/upp-logo-c.png', alt: 'University Pension Plan Ontario' },
     { src: '/assets/Huron Logo.png', alt: 'Huron University College (Western)' },
     { src: '/assets/Laurier Logo.png', alt: 'Wilfrid Laurier University' },
   ];
