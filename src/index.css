@@ -874,7 +874,11 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 .animate-scroll-left {
-  animation: scroll-left 25s linear infinite;
+  animation: scroll-left 60s linear infinite;
+}
+
+.animate-scroll-left:hover {
+  animation-play-state: paused;
 }
 
 .animate-scroll-left:hover {

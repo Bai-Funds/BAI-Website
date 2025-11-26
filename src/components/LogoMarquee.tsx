@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoMarqueeProps {
@@ -7,47 +7,6 @@ interface LogoMarqueeProps {
 }
 
 const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }) => {
-  const [isPaused, setIsPaused] = useState(false);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>();
-  const resumeTimeoutRef = useRef<NodeJS.Timeout>();
-
-  // Auto-scroll animation using scrollLeft (allows manual scrolling)
-  useEffect(() => {
-    if (isPaused || !scrollContainerRef.current) return;
-
-    const container = scrollContainerRef.current;
-    const scrollWidth = container.scrollWidth;
-    const clientWidth = container.clientWidth;
-    const oneSetWidth = scrollWidth / 5; // We have 5 copies
-
-    const animate = () => {
-      if (!scrollContainerRef.current || isPaused) return;
-
-      const currentScroll = scrollContainerRef.current.scrollLeft;
-      
-      // If we've scrolled past one set, reset to start of next identical set
-      if (currentScroll >= oneSetWidth) {
-        scrollContainerRef.current.scrollLeft = currentScroll - oneSetWidth;
-      } else {
-        // Smoothly scroll forward (slower speed)
-        scrollContainerRef.current.scrollLeft += 0.2;
-      }
-
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (resumeTimeoutRef.current) {
-        clearTimeout(resumeTimeoutRef.current);
-      }
-    };
-  }, [isPaused]);
 
   // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
   const logos = [
@@ -87,36 +46,8 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
         <div className={cn("absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none", embedded ? "bg-gradient-to-r from-gray-50 to-transparent" : "bg-gradient-to-r from-white to-transparent")} />
         <div className={cn("absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none", embedded ? "bg-gradient-to-l from-gray-50 to-transparent" : "bg-gradient-to-l from-white to-transparent")} />
         
-        {/* Scrolling logos - scrollable with mouse wheel/touch */}
-        <div 
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto scrollbar-hide"
-          style={{ 
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch'
-          }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onWheel={(e) => {
-            if (scrollContainerRef.current) {
-              scrollContainerRef.current.scrollLeft += e.deltaY;
-              setIsPaused(true);
-              // Resume after 2 seconds of no interaction
-              if (resumeTimeoutRef.current) {
-                clearTimeout(resumeTimeoutRef.current);
-              }
-              resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 2000);
-            }
-          }}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => {
-            if (resumeTimeoutRef.current) {
-              clearTimeout(resumeTimeoutRef.current);
-            }
-            resumeTimeoutRef.current = setTimeout(() => setIsPaused(false), 2000);
-          }}
-        >
+        {/* Scrolling logos - CSS animation with hover pause */}
+        <div className="flex animate-scroll-left overflow-hidden">
           {duplicatedLogos.map((logo, index) => (
             <div
               key={index}
