@@ -874,11 +874,21 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 .animate-scroll-left {
-  animation: scroll-left 50s linear infinite;
+  animation: scroll-left 25s linear infinite;
 }
 
 .animate-scroll-left:hover {
   animation-play-state: paused;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Team photo dark blue tint effect - less desaturated, more transparent */

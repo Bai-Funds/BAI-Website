@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoMarqueeProps {
@@ -7,6 +7,9 @@ interface LogoMarqueeProps {
 }
 
 const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }) => {
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   // Ordered as requested: Boardy, TMX, Ivey, RBC, Waterloo, Cornell, BMO, UC Davis, USTC, Huron, Laurier
   const logos = [
     { src: '/assets/Boardy Logo.png', alt: 'Boardy AI' },
@@ -39,14 +42,39 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
         </div>
       </div>
 
-      {/* Scrolling container */}
+      {/* Scrolling container - scrollable */}
       <div className="relative">
         {/* Fade edges */}
-        <div className={cn("absolute left-0 top-0 bottom-0 w-32 z-10", embedded ? "bg-gradient-to-r from-gray-50 to-transparent" : "bg-gradient-to-r from-white to-transparent")} />
-        <div className={cn("absolute right-0 top-0 bottom-0 w-32 z-10", embedded ? "bg-gradient-to-l from-gray-50 to-transparent" : "bg-gradient-to-l from-white to-transparent")} />
+        <div className={cn("absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none", embedded ? "bg-gradient-to-r from-gray-50 to-transparent" : "bg-gradient-to-r from-white to-transparent")} />
+        <div className={cn("absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none", embedded ? "bg-gradient-to-l from-gray-50 to-transparent" : "bg-gradient-to-l from-white to-transparent")} />
         
-        {/* Scrolling logos */}
-        <div className="flex animate-scroll-left">
+        {/* Scrolling logos - scrollable with mouse wheel/touch */}
+        <div 
+          ref={scrollContainerRef}
+          className={cn(
+            "flex overflow-x-auto scrollbar-hide",
+            !isPaused && "animate-scroll-left"
+          )}
+          style={{ 
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onWheel={(e) => {
+            if (scrollContainerRef.current) {
+              scrollContainerRef.current.scrollLeft += e.deltaY;
+              setIsPaused(true);
+              // Resume after 2 seconds of no interaction
+              setTimeout(() => setIsPaused(false), 2000);
+            }
+          }}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => {
+            setTimeout(() => setIsPaused(false), 2000);
+          }}
+        >
           {duplicatedLogos.map((logo, index) => (
             <div
               key={index}
