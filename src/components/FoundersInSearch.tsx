@@ -48,12 +48,12 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
     },
     {
       name: "Josephina Kim",
-      role: "Head of Execution Research",
+      role: "Head of Execution Infrastructure",
       degree: "B.Sc., Computer Science (Waterloo) & B.B.A., Business Administration (Laurier)",
       logoPrimary: "/assets/Waterloo Logo.png",
       logoSecondary: "/assets/Laurier Logo.png",
       fullDescription:
-        "Josephina leads execution research and partnerships at Sequence Markets, managing data/vendor relationships, university and industry outreach, events, and the day‑to‑day processes that keep research execution running smoothly. She is pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University and is a Schulich Leader Scholar. She leads Sequence Markets' industry research and sector analysis, having worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading, and as a venture capital analyst at Render Capital evaluating early‑stage technology investments.",
+        "Josephina leads execution infrastructure and market structure at Sequence Markets, bringing deep expertise in institutional execution infrastructure, market structure insights, and sell-side flows. She is currently working as an electronic trader and AI researcher at RBC Capital Markets in New York. She is pursuing a dual Computer Science and Business Administration program at the University of Waterloo and Wilfrid Laurier University and is a Schulich Leader Scholar. She previously worked as a quantitative analyst on BMO Capital Markets' Electronic Cash Equities desk developing models for electronic trading.",
       image: "/assets/Josephina HeadShot.png",
       linkedin: "https://www.linkedin.com/in/josephina-kim/",
     },
