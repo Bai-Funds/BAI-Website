@@ -9,9 +9,13 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ className }) => {
   return (
-    <section id="about" className={cn('pt-12 pb-28 md:pt-16 md:pb-36 bg-gray-50 relative overflow-hidden', className)}>
+    <section id="about" className={cn('pt-12 pb-28 md:pt-16 md:pb-36 bg-gray-50 relative', className)}>
+      {/* Extended background to cover top - extends 40px upward */}
+      <div className="absolute -top-10 left-0 right-0 h-10 bg-gray-50 z-0" />
       {/* Quote streams on sides */}
-      <QuoteStream />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <QuoteStream />
+      </div>
       <div className="container mx-auto relative z-10">
         <div className="max-w-5xl mx-auto">
           <FadeIn>
