@@ -116,7 +116,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
           </FadeIn>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <FadeIn key={index} delay={200 + index * 50}>
               <div 
