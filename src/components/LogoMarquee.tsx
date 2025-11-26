@@ -30,8 +30,8 @@ const LogoMarquee: React.FC<LogoMarqueeProps> = ({ className, embedded = false }
       if (currentScroll >= oneSetWidth) {
         scrollContainerRef.current.scrollLeft = currentScroll - oneSetWidth;
       } else {
-        // Smoothly scroll forward
-        scrollContainerRef.current.scrollLeft += 0.5;
+        // Smoothly scroll forward (slower speed)
+        scrollContainerRef.current.scrollLeft += 0.2;
       }
 
       animationFrameRef.current = requestAnimationFrame(animate);
