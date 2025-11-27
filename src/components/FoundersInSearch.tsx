@@ -13,8 +13,8 @@ interface FoundersInSearchProps {
 const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  // Feature flag: Set to true to show Zilong Bai
-  const SHOW_ZILONG_BAI = true;
+  // Feature flag: set to true to temporarily re-enable Zilong Bai
+  const SHOW_ZILONG_BAI = false;
 
   const allTeamMembers = [
     {
@@ -118,7 +118,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <FadeIn key={index} delay={200 + index * 50}>
               <div

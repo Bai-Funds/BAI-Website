@@ -1,3 +1,17 @@
+### Team Update — Deprecate Zilong Bai profile (2025-11-27)
+
+- Changes:
+  - Disabled the Zilong Bai profile via the existing feature flag so the card no longer renders but remains easy to re-enable later.
+  - Updated the team grid to use four columns on desktop so the remaining four profiles fill the same section width cleanly.
+- Files modified:
+  - `src/components/FoundersInSearch.tsx`
+- Notes:
+  - Verified `vite.config.ts` still uses `target: 'es2020'` to avoid GitHub Pages MIME issues.
+- Current status:
+  - Team section shows four profiles with a balanced layout; ready for deploy when desired.
+
+---
+
 ### XTX-Style Design Polish & Sensitive Info Cleanup — 2025-11-25
 
 - Changes:
