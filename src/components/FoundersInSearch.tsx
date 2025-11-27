@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { ChevronRight } from 'lucide-react';
 import FadeIn from './animations/FadeIn';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
@@ -72,7 +73,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
   ];
 
   // Filter team members based on feature flag
-  const teamMembers = allTeamMembers.filter(member => 
+  const teamMembers = allTeamMembers.filter(member =>
     member.name !== "Zilong Bai" || SHOW_ZILONG_BAI
   );
 
@@ -88,13 +89,13 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
               Team
             </h2>
           </FadeIn>
-          
+
           <FadeIn delay={100}>
             <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-16 max-w-3xl font-normal">
               Market-structure engineers and ML researchers building execution infrastructure.
             </p>
           </FadeIn>
-          
+
           <FadeIn delay={150}>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 pt-10 border-t border-gray-200">
               <div className="border-l-2 border-gray-900 pl-6">
@@ -116,26 +117,30 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
             </div>
           </FadeIn>
         </div>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <FadeIn key={index} delay={200 + index * 50}>
-              <div 
-                className="cursor-pointer group"
+              <div
+                className="cursor-pointer group relative h-full flex flex-col"
                 onClick={() => setExpandedIndex(index)}
               >
                 {/* Dark blue tint that reveals original color on hover */}
                 <div className="aspect-square mb-4 overflow-hidden bg-gray-100 rounded-lg relative">
-                  <img 
-                    src={member.image} 
+                  <img
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 team-photo-tint"
                   />
-                  <div 
+                  <div
                     className="absolute inset-0 bg-blue-950/10 group-hover:bg-transparent transition-all duration-300"
                   />
                 </div>
-                <h3 className="text-base font-semibold text-gray-900 mb-1">{member.name}</h3>
+
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-base font-semibold text-gray-900">{member.name}</h3>
+                  <ChevronRight className="w-4 h-4 text-gray-500 mr-2 group-hover:text-gray-900 transition-colors duration-300" />
+                </div>
                 <p className="text-sm text-gray-500">{member.role}</p>
               </div>
 
@@ -204,7 +209,7 @@ const FoundersInSearch: React.FC<FoundersInSearchProps> = ({ className }) => {
             </FadeIn>
           ))}
         </div>
-        
+
         {/* Experience section - moved inside Team */}
         <div className="mt-20 pt-16 border-t border-gray-200">
           <LogoMarquee embedded />
