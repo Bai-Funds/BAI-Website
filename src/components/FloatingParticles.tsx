@@ -32,13 +32,15 @@ const FloatingParticles: React.FC = () => {
     setParticles(initialParticles);
 
     const animate = () => {
-      setParticles(prev =>
-        prev.map(p => ({
-          ...p,
-          x: ((p.x + p.speedX + 100) % 100),
-          y: ((p.y + p.speedY + 100) % 100),
-        }))
-      );
+      if (!document.hidden) {
+        setParticles(prev =>
+          prev.map(p => ({
+            ...p,
+            x: ((p.x + p.speedX + 100) % 100),
+            y: ((p.y + p.speedY + 100) % 100),
+          }))
+        );
+      }
       rafRef.current = requestAnimationFrame(animate);
     };
 

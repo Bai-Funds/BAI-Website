@@ -27,9 +27,9 @@ const RoutingNodes: React.FC = () => {
     }
     // Middle nodes (random positions)
     for (let i = 0; i < 12; i++) {
-      nodes.push({ 
-        x: 20 + Math.random() * 60, 
-        y: 10 + Math.random() * 80 
+      nodes.push({
+        x: 20 + Math.random() * 60,
+        y: 10 + Math.random() * 80
       });
     }
     // Exit nodes (right side)
@@ -40,7 +40,7 @@ const RoutingNodes: React.FC = () => {
     const createLine = (): Line => {
       const startNode = nodes[Math.floor(Math.random() * 5)]; // Left entry
       const path: Node[] = [{ ...startNode }];
-      
+
       // Add 2-4 intermediate nodes
       const numMidNodes = 2 + Math.floor(Math.random() * 3);
       let lastX = 0;
@@ -52,7 +52,7 @@ const RoutingNodes: React.FC = () => {
           lastX = chosen.x;
         }
       }
-      
+
       // Add exit node
       const exitNode = nodes[17 + Math.floor(Math.random() * 5)];
       path.push({ ...exitNode });
@@ -76,19 +76,21 @@ const RoutingNodes: React.FC = () => {
     setLines(initialLines);
 
     const animate = () => {
-      setLines(prev => {
-        let updated = prev.map(line => ({
-          ...line,
-          progress: line.progress + 0.5,
-        })).filter(line => line.progress < 120);
+      if (!document.hidden) {
+        setLines(prev => {
+          let updated = prev.map(line => ({
+            ...line,
+            progress: line.progress + 0.5,
+          })).filter(line => line.progress < 120);
 
-        // Spawn new lines
-        if (updated.length < 6 && Math.random() < 0.03) {
-          updated.push(createLine());
-        }
+          // Spawn new lines
+          if (updated.length < 6 && Math.random() < 0.03) {
+            updated.push(createLine());
+          }
 
-        return updated;
-      });
+          return updated;
+        });
+      }
       rafRef.current = requestAnimationFrame(animate);
     };
 
@@ -127,7 +129,7 @@ const RoutingNodes: React.FC = () => {
             <stop offset="100%" stopColor="#666" stopOpacity="0" />
           </linearGradient>
         </defs>
-        
+
         {/* Draw node points */}
         {[...Array(12)].map((_, i) => (
           <circle
@@ -139,7 +141,7 @@ const RoutingNodes: React.FC = () => {
             opacity="0.3"
           />
         ))}
-        
+
         {/* Draw lines */}
         {lines.map(line => (
           <g key={line.id}>

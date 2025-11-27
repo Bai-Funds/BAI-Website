@@ -5,6 +5,7 @@ const InfinityLoop: React.FC = () => {
 
   useEffect(() => {
     const animate = () => {
+      if (document.hidden) return;
       setOffset(prev => (prev + 1) % 1000);
     };
     const interval = setInterval(animate, 30);
@@ -20,7 +21,7 @@ const InfinityLoop: React.FC = () => {
       <div className="absolute right-[12%] top-1/2 -translate-y-1/2 text-[10px] font-mono text-gray-300 opacity-40">
         OUT
       </div>
-      
+
       <svg
         width="70%"
         height="70%"
@@ -39,7 +40,7 @@ const InfinityLoop: React.FC = () => {
           fill="none"
           strokeLinecap="round"
         />
-        
+
         {/* Animated flowing line on infinity - this is the feedback flow */}
         <path
           d="M 100 100 
@@ -55,7 +56,7 @@ const InfinityLoop: React.FC = () => {
           strokeDashoffset={-offset}
           opacity="0.35"
         />
-        
+
         {/* Second flowing line (offset) for continuous flow */}
         <path
           d="M 100 100 

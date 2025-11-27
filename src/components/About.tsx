@@ -10,8 +10,7 @@ interface AboutProps {
 const About: React.FC<AboutProps> = ({ className }) => {
   return (
     <section id="about" className={cn('pt-12 pb-28 md:pt-16 md:pb-36 bg-gray-50 relative', className)}>
-      {/* Extended background to cover top - extends 40px upward */}
-      <div className="absolute -top-10 left-0 right-0 h-10 bg-gray-50 z-0" />
+      {/* Extended background removed to fix layout issues */}
       {/* Quote streams on sides */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <QuoteStream />
@@ -26,7 +25,7 @@ const About: React.FC<AboutProps> = ({ className }) => {
               Who We Are
             </h2>
           </FadeIn>
-          
+
           <div className="grid lg:grid-cols-2 gap-20">
             <div>
               <FadeIn delay={100}>
@@ -34,13 +33,13 @@ const About: React.FC<AboutProps> = ({ className }) => {
                   Sequence Markets is an execution-technology company focused on digital assets and tokenised markets.
                 </p>
               </FadeIn>
-              
+
               <FadeIn delay={150}>
                 <p className="text-base text-gray-600 leading-relaxed mb-12 font-normal">
                   We operate at the intersection of market structure, low-latency engineering, and AI-driven decision systems. Headquartered in Toronto, with planned expansion into Asia and the United States.
                 </p>
               </FadeIn>
-              
+
               <FadeIn delay={200}>
                 <div className="border-t border-gray-200 pt-10">
                   <h3 className="text-xs text-gray-500 uppercase tracking-[0.4em] font-medium mb-6">Team Background</h3>
@@ -53,7 +52,7 @@ const About: React.FC<AboutProps> = ({ className }) => {
                 </div>
               </FadeIn>
             </div>
-            
+
             <div>
               <FadeIn delay={250}>
                 <div className="grid grid-cols-2 gap-8 mb-12">
@@ -75,7 +74,7 @@ const About: React.FC<AboutProps> = ({ className }) => {
                   </div>
                 </div>
               </FadeIn>
-              
+
               <FadeIn delay={300}>
                 <div className="border-t border-gray-200 pt-10">
                   <h3 className="text-xs text-gray-500 uppercase tracking-[0.4em] font-medium mb-6">Approach</h3>

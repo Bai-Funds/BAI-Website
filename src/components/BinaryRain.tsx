@@ -25,6 +25,8 @@ const BinaryRain: React.FC = () => {
     const binary = '01';
 
     const draw = () => {
+      if (document.hidden) return;
+
       // Semi-transparent black to create fade effect
       ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);

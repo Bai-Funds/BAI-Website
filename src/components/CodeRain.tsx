@@ -56,7 +56,7 @@ const CodeRain: React.FC = () => {
         id,
         text,
         // Position on sides only - avoid center content area (25-75% is content zone)
-        x: side === 'left' 
+        x: side === 'left'
           ? 2 + Math.random() * 18  // 2% to 20% from left (well clear of center)
           : 80 + Math.random() * 18, // 80% to 98% from left (well clear of center)
         y: startY ?? Math.random() * 100,
@@ -76,7 +76,17 @@ const CodeRain: React.FC = () => {
     setLines(initial);
 
     let idCounter = 20;
+    let lastTime = Date.now();
+
     const interval = setInterval(() => {
+      // Skip updates if tab is hidden to prevent accumulation/busy state
+      if (document.hidden) return;
+
+      const now = Date.now();
+      // Cap delta time to prevent huge jumps after lag
+      const dt = Math.min(now - lastTime, 100);
+      lastTime = now;
+
       setLines(prev => {
         return prev.map(line => {
           if (line.phase === 'typing') {

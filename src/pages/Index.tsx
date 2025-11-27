@@ -15,36 +15,36 @@ const Index = () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href')?.substring(1);
         if (!targetId) return;
-        
+
         const targetElement = document.getElementById(targetId);
-        const headerEl = document.querySelector('header');
-        const headerHeight = headerEl instanceof HTMLElement ? headerEl.offsetHeight : 80;
+        // Use fixed offset to match Header behavior
+        const headerOffset = 60;
         if (targetElement) {
           const rect = targetElement.getBoundingClientRect();
           const absoluteTop = window.scrollY + rect.top;
           window.scrollTo({
-            top: absoluteTop - headerHeight,
+            top: absoluteTop - headerOffset,
             behavior: 'smooth'
           });
         }
       });
     });
-    
+
     return () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', function () {});
+        anchor.removeEventListener('click', function () { });
       });
     };
   }, []);
-  
+
   return (
     <main className="w-full overflow-x-hidden relative bg-white">
       {/* Crypto ticker at bottom - always visible */}
       <CryptoTicker />
-      
+
       <div className="relative z-10">
         <Header />
         <Hero />
