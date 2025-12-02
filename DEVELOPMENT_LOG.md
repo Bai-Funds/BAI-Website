@@ -1,3 +1,18 @@
+### Redeploy Main Branch — 2025-01-27
+
+- Actions:
+  - Triggered GitHub Pages redeploy via empty commit push to main branch
+  - Verified `vite.config.ts` target is `es2020` (correct for GitHub Pages MIME type compatibility)
+- Deployment:
+  - GitHub Actions workflow triggered automatically on push
+  - Build and deploy process running in GitHub Actions
+  - Expected deployment time: 2-5 minutes
+- Status:
+  - Deployment initiated successfully
+  - Monitor GitHub Actions for completion status
+
+---
+
 ### Team Update — Deprecate Zilong Bai profile (2025-11-27)
 
 - Changes:
